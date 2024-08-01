@@ -25,6 +25,7 @@ private:
   float enemySpawnTimer;
   float gameTimer;
   Winner winner;
+  bool paused;
 
   void Restart();
   void HandleMusic();
@@ -32,8 +33,10 @@ private:
   void HandleEnemies();
   void HandlePlayers();
   void HandleTimers();
+  void HandlePause();
   void DrawWinner();
   void DrawScores();
   void DrawEntities();
   void DrawTimer();
+  void DrawPaused();
 };

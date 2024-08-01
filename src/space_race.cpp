@@ -18,6 +18,10 @@ SpaceRace::~SpaceRace() {}
 
 void SpaceRace::Update() {
   HandleMusic();
+  HandlePause();
+  if (paused) {
+    return;
+  }
   if (winner != NONE) {
     HandleLoss();
     return;
@@ -29,6 +33,11 @@ void SpaceRace::Update() {
 
 void SpaceRace::Draw() {
   ClearBackground(WIN_BG);
+
+  if (paused) {
+    DrawPaused();
+    return;
+  }
 
   if (winner != NONE) {
     DrawWinner();
@@ -60,6 +69,7 @@ void SpaceRace::Restart() {
   enemySpawnTimer = ENEMY_SPAWN_INTERVAL;
   gameTimer = GAME_TIMER;
   winner = NONE;
+  paused = false;
 }
 
 void SpaceRace::HandleMusic() {
@@ -166,4 +176,18 @@ void SpaceRace::DrawTimer() {
   float height = gameTimer * TIMER_HEIGHT_MULTIPLIER;
   DrawRectangle(winSize.x / 2 - (float)TIMER_THICK / 2, winSize.y - height,
                 TIMER_THICK, height, TIMER_COLOR);
+}
+
+void SpaceRace::DrawPaused() {
+  const char *text = "Paused";
+  Vector2 textSize =
+      AssertTextFitsInViewport(text, LARGE_FONT_SIZE, GetWindowSize() / 2);
+  DrawText(text, winSize.x / 2 - textSize.x / 2, winSize.y / 2 - textSize.y / 2,
+           textSize.y, SCORE_TEXT_COLOR);
+}
+
+void SpaceRace::HandlePause() {
+  if (IsKeyPressed(KEY_PAUSE_GAME)) {
+    paused = !paused;
+  }
 }

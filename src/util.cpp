@@ -36,3 +36,9 @@ Vector2 AssertTextFitsInViewport(const char *text, int fontSize,
 
   return {textW, (float)fontSize};
 }
+
+void WorldBoundaryCheck(Vector2 *pos, Vector2 size) {
+  if (pos->y > GetWindowHeight() - size.y) {
+    pos->y = GetWindowHeight() - size.y;
+  }
+}

@@ -12,7 +12,7 @@ Player::Player(PlayerConfig pc) {
 Player::~Player() {}
 
 void Player::Update() {
-  Vector2 vel;
+  Vector2 vel = {0, 0};
   if (IsKeyDown(pc.keyMoveUp) && IsKeyDown(pc.keyMoveDown)) {
     vel.y = 0;
   } else if (IsKeyDown(pc.keyMoveUp)) {
@@ -21,6 +21,7 @@ void Player::Update() {
     vel.y = speed.y;
   }
   pos += vel * GetFrameTime();
+  WorldBoundaryCheck(&pos, size);
 }
 
 void Player::Draw(Texture2D tex) {

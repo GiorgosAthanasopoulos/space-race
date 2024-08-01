@@ -21,10 +21,11 @@
 #define KEY_P2_MOVE_DOWN KEY_DOWN
 #define KEY_RESTART KEY_SPACE
 #define KEY_MUTE KEY_M
+#define KEY_PAUSE_GAME KEY_P
 // == KEYBIND ==
 
 // == DEBUG ==
-#define DEBUG true
+#define DEBUG false
 #define DEBUG_HTBX_THICK 1
 #define DEBUG_HTBX_COLOR RED
 // == DEBUG ==

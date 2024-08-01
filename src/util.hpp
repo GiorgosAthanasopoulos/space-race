@@ -18,3 +18,4 @@ Vector2 MaintainPosAfterResize(Vector2 old, Vector2 nnew, Vector2 pos);
 
 Vector2 AssertTextFitsInViewport(const char *text, int fontSize,
                                  Vector2 maxSize);
+void WorldBoundaryCheck(Vector2 *pos, Vector2 size);
